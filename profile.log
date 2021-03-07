@@ -1,0 +1,27 @@
+[weixingsun@wsun scripts]$ sudo ./mysql_counter.py --help
+USAGE: mysql_counter [select/insert/update/delete]
+[weixingsun@wsun scripts]$ sudo ./mysql_counter.py insert
+Counting insert statements for MySQL 8115 ... Ctrl+C to End
+^C     COUNT SQLstatements
+      7403 "INSERT INTO sbtest1 (id, k, c, pad) VALUES (?, ?, ?, ?)"
+Captured total 7403 insert statements in 6.286   
+[weixingsun@wsun scripts]$ sudo ./mysql_counter.py select
+Counting select statements for MySQL 8115 ... Ctrl+C to End
+^C     COUNT SQLstatements
+      4661 "SELECT c FROM sbtest1 WHERE id BETWEEN ? AND ?"
+      4701 "SELECT SUM(k) FROM sbtest1 WHERE id BETWEEN ? AND ?"
+      4717 "SELECT c FROM sbtest1 WHERE id BETWEEN ? AND ? ORDER BY c"
+      4748 "SELECT DISTINCT c FROM sbtest1 WHERE id BETWEEN ? AND ? ORDER BY c"
+     47457 "SELECT c FROM sbtest1 WHERE id=?"
+Captured total 66284 select statements in 4.208   
+[weixingsun@wsun scripts]$ sudo ./mysql_counter.py delete
+Counting delete statements for MySQL 8115 ... Ctrl+C to End
+^C     COUNT SQLstatements
+      2564 "DELETE FROM sbtest1 WHERE id=?"
+Captured total 2564 delete statements in 2.244   
+[weixingsun@wsun scripts]$ sudo ./mysql_counter.py update
+Counting update statements for MySQL 8115 ... Ctrl+C to End
+^C     COUNT SQLstatements
+      2277 "UPDATE sbtest1 SET k=k+1 WHERE id=?"
+      2293 "UPDATE sbtest1 SET c=? WHERE id=?"
+Captured total 4570 update statements in 2.105
